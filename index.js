@@ -7,6 +7,8 @@ import { mintWrap } from "./actions/mint.js";
 import { stakeWrap } from "./actions/stake.js";
 import { bridgeWrap } from "./actions/bridge.js";
 import { bridgeEth } from "./actions/bridgeEth.js";
+import { transferAsset } from "./actions/transfer.js";
+
 
 const program = new Command();
 
@@ -74,5 +76,17 @@ program
     bridgeEth(options.amount, options.recipient);
   });
 
+// 7. Transfer Koin/Token
+program
+  .command("transfer")
+  .description("Kirim native ETH atau token ERC-20 (USDT, USDC, T+, C+) ke alamat lain di Sepolia")
+  .requiredOption("-p, --product <eth|usdt|usdc|t+|c+|contract_address>", "Aset yang akan ditransfer")
+  .requiredOption("-to, --to <address>", "Alamat dompet penerima")
+  .requiredOption("-a, --amount <amount>", "Jumlah aset yang dikirim")
+  .action((options) => {
+    transferAsset(options.product, options.to, options.amount);
+  });
+
 program.parse(process.argv);
+
 

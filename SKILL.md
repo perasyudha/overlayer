@@ -1,6 +1,6 @@
 ---
 name: overlayer-ops
-description: Melakukan operasi smart contract Overlayer pada jaringan Ethereum Sepolia (cek saldo, minting wrap, staking vault, bridge LayerZero V2, dan bridge ETH L1-L2).
+description: Melakukan operasi smart contract Overlayer pada jaringan Ethereum Sepolia (cek saldo, transfer koin/token, minting wrap, staking vault, bridge LayerZero V2, dan bridge ETH L1-L2).
 
 env:
   - PRIVATE_KEY
@@ -56,14 +56,25 @@ Melakukan bridge native ETH dari Ethereum Sepolia ke Base Sepolia melalui L1Stan
 *   **Bridge ETH ke dompet kustom di Base Sepolia:**
     `node skills/overlayer-ops/index.js bridge-eth -a <jumlah> -r <alamat_penerima>`
 
+### 7. Kirim Aset (Transfer)
+Mengirim native ETH atau token ERC-20 (USDT, USDC, T+, C+, atau alamat kontrak kustom) ke alamat lain di Sepolia.
+*   **Transfer ETH:**
+    `node skills/overlayer-ops/index.js transfer -p eth -to <alamat_penerima> -a <jumlah>`
+*   **Transfer T+:**
+    `node skills/overlayer-ops/index.js transfer -p t+ -to <alamat_penerima> -a <jumlah>`
+*   **Transfer Token Kustom:**
+    `node skills/overlayer-ops/index.js transfer -p <alamat_kontrak> -to <alamat_penerima> -a <jumlah>`
+
+
 
 ---
 
 ## Panduan Perilaku Agent (Prompt Tambahan)
 
 Saat pengguna berinteraksi terkait pengujian testnet Overlayer:
-1.  **Analisis Keinginan Pengguna:** Terjemahkan perintah seperti "wrap 5 USDT", "stake 10 T+", "bridge 2 C+ ke Arbitrum Sepolia", atau "bridge 0.1 ETH dari Sepolia ke Base Sepolia" menjadi perintah CLI yang sesuai.
-2.  **Verifikasi Parameter:** Pastikan jumlah (`-a`) valid, produk (`-p`) sesuai jenisnya, dan chain tujuan bridge (`-d`) didukung.
+1.  **Analisis Keinginan Pengguna:** Terjemahkan perintah seperti "wrap 5 USDT", "stake 10 T+", "bridge 2 C+ ke Arbitrum Sepolia", "bridge 0.1 ETH dari Sepolia ke Base Sepolia", atau "kirim 5 T+ ke 0xabc..." menjadi perintah CLI yang sesuai.
+2.  **Verifikasi Parameter:** Pastikan jumlah (`-a`) valid, penerima (`-to` atau `-r`) valid, produk (`-p`) sesuai jenisnya, dan chain tujuan bridge (`-d`) didukung.
+
 
 3.  **Tampilkan Hasil Transaksi:** Sajikan respon JSON sukses dari CLI dengan format markdown yang rapi, sertakan **Link Explorer** Sepolia Etherscan agar pengguna dapat langsung memantau transaksi.
 4.  **Keamanan:** Jangan menanyakan private key pengguna. Pengaturan Wallet menggunakan file `.env` lokal di folder ini.

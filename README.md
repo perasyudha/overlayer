@@ -89,6 +89,9 @@ node index.js bridge -p t+ -a 2 -d base
 
 # 7. Bridge Native ETH ke Base Sepolia sejumlah 0.05
 node index.js bridge-eth -a 0.05
+
+# 8. Kirim T+ ke alamat lain sejumlah 10
+node index.js transfer -p t+ -to 0xRecipientAddress... -a 10
 ```
 
 ---
