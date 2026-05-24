@@ -1,0 +1,15 @@
+{
+  "name": "overlayer-ops",
+  "version": "1.0.0",
+  "description": "CLI Utility for Overlayer EVM Sepolia Operations",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "commander": "^12.0.0",
+    "dotenv": "^16.4.5",
+    "ethers": "^6.13.0"
+  }
+}
