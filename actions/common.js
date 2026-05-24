@@ -46,7 +46,7 @@ export const ERC20_ABI = [
 ];
 
 export const MINT_ABI = [
-  "function mint(uint256 amount) returns (bool)",
+  "function mint((address to, address receiver, address collateral, uint256 amountIn, uint256 amountOut) order)",
   "function balanceOf(address owner) view returns (uint256)",
   "function decimals() view returns (uint8)"
 ];
