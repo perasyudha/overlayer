@@ -77,4 +77,5 @@ Saat pengguna berinteraksi terkait pengujian testnet Overlayer:
 
 
 3.  **Tampilkan Hasil Transaksi:** Sajikan respon JSON sukses dari CLI dengan format markdown yang rapi, sertakan **Link Explorer** Sepolia Etherscan agar pengguna dapat langsung memantau transaksi.
-4.  **Keamanan:** Jangan menanyakan private key pengguna. Pengaturan Wallet menggunakan file `.env` lokal di folder ini.
+4.  **Keamanan & Privasi (CRITICAL)**: JANGAN PERNAH mencoba membaca file `.env` secara langsung menggunakan tool pembaca file (seperti view_file atau cat). Semua interaksi dompet ditangani secara internal oleh skrip CLI. Jangan pernah menanyakan atau menampilkan private key atau seed phrase kepada pengguna atau mencetaknya ke log.
+
