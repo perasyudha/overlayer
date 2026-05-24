@@ -71,13 +71,20 @@ export function getWallet() {
   const provider = new ethers.JsonRpcProvider(rpcUrl);
   
   const privateKey = process.env.PRIVATE_KEY;
-  if (!privateKey || privateKey.trim() === "" || privateKey.startsWith("0x0000000000")) {
-    throw new Error("Konfigurasi wallet tidak ditemukan atau masih bernilai default. Silakan isi PRIVATE_KEY di file .env Anda.");
+  const mnemonic = process.env.MNEMONIC;
+  
+  let wallet;
+  if (privateKey && privateKey.trim() !== "" && !privateKey.startsWith("0x0000000000000000000000000000000000000000")) {
+    wallet = new ethers.Wallet(privateKey, provider);
+  } else if (mnemonic && mnemonic.trim() !== "") {
+    wallet = ethers.Wallet.fromPhrase(mnemonic, provider);
+  } else {
+    throw new Error("Konfigurasi wallet tidak ditemukan. Silakan isi PRIVATE_KEY atau MNEMONIC di file .env Anda.");
   }
   
-  const wallet = new ethers.Wallet(privateKey, provider);
   return { wallet, provider, chainConfig: SEPOLIA_CONFIG };
 }
+
 
 export function formatUnits(value, decimals = 18) {
   return ethers.formatUnits(value, decimals);
