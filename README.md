@@ -14,7 +14,19 @@ Utilitas CLI dan OpenClaw Agent Skill yang dirancang khusus untuk interaksi on-c
 
 ## Langkah Instalasi ke OpenClaw
 
-Ikuti langkah-langkah di bawah ini untuk memasang skill ini pada agen OpenClaw Anda secara lokal:
+### Cara Cepat (Memerintahkan AI Agent secara Langsung)
+
+Jika Anda menggunakan agen AI OpenClaw yang aktif dengan akses CLI, Anda cukup memerintahkan agen Anda melalui chat:
+> *"Tolong pasangkan skill Overlayer ini ke sistem kamu: https://github.com/perasyudha/overlayer.git"*
+
+Agen akan otomatis melakukan `git clone`, menginstal dependensi dengan `npm install`, dan meregistrasikannya secara mandiri ke sistemnya.
+
+---
+
+### Cara Manual (Langkah-langkah Detil)
+
+Ikuti langkah-langkah di bawah ini untuk memasang skill ini pada agen OpenClaw Anda secara manual:
+
 
 ### 1. Clone Repositori
 Masuk ke direktori instalasi agen OpenClaw Anda, kemudian masuk ke folder `.agents/skills/` dan clone repositori ini:
