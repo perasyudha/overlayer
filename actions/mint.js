@@ -77,7 +77,7 @@ export async function mintWrap(product, amountInput) {
     // So we should pass `amountWeiCollateral` (which is in collateral decimals, e.g. 6) to `mint(amount)`.
     // Let's use `amountWeiCollateral` for `mint(amount)`.
     
-    const mintTx = await wrapperContract.mint(amountWeiCollateral);
+    const mintTx = await wrapperContract.mint(amountWeiWrapper);
     console.log(`Transaksi mint dikirim. Hash: ${mintTx.hash}`);
     console.log(`Menunggu konfirmasi block...`);
     const receipt = await mintTx.wait(1);
