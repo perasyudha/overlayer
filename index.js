@@ -34,12 +34,12 @@ program
     getBalance(options.token);
   });
 
-// 3. Mint Wrap (Collateral to WRAP)
+// 3. Swap (Collateral to WRAP)
 program
-  .command("mint")
-  .description("Mint stablecoin wrap (USDT ke T+ atau USDC ke C+) di Sepolia")
-  .requiredOption("-p, --product <usdt|usdc>", "Produk stablecoin yang akan diwrap (USDT atau USDC)")
-  .requiredOption("-a, --amount <amount>", "Jumlah stablecoin yang akan diwrap")
+  .command("swap")
+  .description("Swap/wrap stablecoin default ke token wrap (USDT ke T+ atau USDC ke C+) di Sepolia")
+  .requiredOption("-p, --product <usdt|usdc>", "Produk stablecoin yang akan ditukar (USDT atau USDC)")
+  .requiredOption("-a, --amount <amount>", "Jumlah stablecoin yang akan ditukar")
   .action((options) => {
     mintWrap(options.product, options.amount);
   });

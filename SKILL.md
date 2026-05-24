@@ -1,6 +1,6 @@
 ---
 name: overlayer-ops
-description: Melakukan operasi smart contract Overlayer pada jaringan Ethereum Sepolia (cek saldo, transfer koin/token, minting wrap, staking vault, bridge LayerZero V2, dan bridge ETH L1-L2).
+description: Melakukan operasi smart contract Overlayer pada jaringan Ethereum Sepolia (cek saldo, transfer koin/token, swap stablecoin, staking vault, bridge LayerZero V2, dan bridge ETH L1-L2).
 
 env:
   - PRIVATE_KEY
@@ -28,12 +28,13 @@ Melihat saldo native ETH atau token tertentu (USDT, USDC, T+, C+, sT+, sC+) di S
 *   **Semua Token:** `node skills/overlayer-ops/index.js balance`
 *   **Spesifik Token:** `node skills/overlayer-ops/index.js balance -t <usdt|usdc|t+|c+|st+|sc+>`
 
-### 3. Mint Wrap (Wrapper Stablecoin)
-Melakukan wrap/minting stablecoin default (USDT ke T+ atau USDC ke C+). Fungsi ini secara otomatis mendeteksi decimals dan melakukan approval token.
-*   **Mint T+ (dari USDT):**
-    `node skills/overlayer-ops/index.js mint -p usdt -a <jumlah>`
-*   **Mint C+ (dari USDC):**
-    `node skills/overlayer-ops/index.js mint -p usdc -a <jumlah>`
+### 3. Swap Stablecoin (Wrap)
+Melakukan swap/wrap stablecoin default (USDT ke T+ atau USDC ke C+). Fungsi ini secara otomatis mendeteksi decimals dan melakukan approval token.
+*   **Swap USDT ke T+:**
+    `node skills/overlayer-ops/index.js swap -p usdt -a <jumlah>`
+*   **Swap USDC ke C+:**
+    `node skills/overlayer-ops/index.js swap -p usdc -a <jumlah>`
+
 
 ### 4. Stake Token Wrap (Staking Vault)
 Staking token wrapped ke ERC-4626 vault (T+ ke sT+ atau C+ ke sC+). Approval dilakukan otomatis sebelum deposit.
@@ -72,7 +73,7 @@ Mengirim native ETH atau token ERC-20 (USDT, USDC, T+, C+, atau alamat kontrak k
 ## Panduan Perilaku Agent (Prompt Tambahan)
 
 Saat pengguna berinteraksi terkait pengujian testnet Overlayer:
-1.  **Analisis Keinginan Pengguna:** Terjemahkan perintah seperti "wrap 5 USDT", "stake 10 T+", "bridge 2 C+ ke Arbitrum Sepolia", "bridge 0.1 ETH dari Sepolia ke Base Sepolia", atau "kirim 5 T+ ke 0xabc..." menjadi perintah CLI yang sesuai.
+1.  **Analisis Keinginan Pengguna:** Terjemahkan perintah seperti "swap 5 USDT ke T+", "stake 10 T+", "bridge 2 C+ ke Arbitrum Sepolia", "bridge 0.1 ETH dari Sepolia ke Base Sepolia", atau "kirim 5 T+ ke 0xabc..." menjadi perintah CLI yang sesuai.
 2.  **Verifikasi Parameter:** Pastikan jumlah (`-a`) valid, penerima (`-to` atau `-r`) valid, produk (`-p`) sesuai jenisnya, dan chain tujuan bridge (`-d`) didukung.
 
 

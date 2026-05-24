@@ -90,8 +90,9 @@ node index.js balance
 # 3. Cek Saldo Token Spesifik (Contoh: t+)
 node index.js balance -t t+
 
-# 4. Minting T+ (dari USDT) sejumlah 10
-node index.js mint -p usdt -a 10
+# 4. Swap USDT ke T+ sejumlah 10
+node index.js swap -p usdt -a 10
+
 
 # 5. Staking T+ ke sT+ sejumlah 5
 node index.js stake -p t+ -a 5
