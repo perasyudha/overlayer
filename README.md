@@ -2,6 +2,9 @@
 
 Utilitas CLI dan OpenClaw Agent Skill yang dirancang khusus untuk interaksi on-chain dApp **[Overlayer (Phase 0) Testnet](https://testnet.overlayer.fi/)** pada jaringan **Ethereum Sepolia**.
 
+> [!NOTE]
+> **Pembaruan Perintah**: Perintah CLI untuk melakukan pencetakan wrap stablecoin (`mint`) telah diubah namanya menjadi `swap` (contoh: `node index.js swap -p usdt -a 1`). Perubahan ini dilakukan untuk membedakan secara jelas dari operasi minting NFT standar pada skill lain, sehingga AI Agent dapat mengidentifikasi perintah dengan benar tanpa ambiguitas.
+
 ## Fitur Utama
 *   **Wallet Address Query**: Melihat alamat wallet yang terkonfigurasi.
 *   **Multi-Token Balance**: Memeriksa saldo dinamis (ETH, USDT, USDC, T+, C+, sT+, sC+) di Ethereum Sepolia.
