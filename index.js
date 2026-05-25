@@ -40,8 +40,9 @@ program
   .description("Swap/wrap stablecoin default ke token wrap (USDT ke T+ atau USDC ke C+) di Sepolia")
   .requiredOption("-p, --product <usdt|usdc>", "Produk stablecoin yang akan ditukar (USDT atau USDC)")
   .requiredOption("-a, --amount <amount>", "Jumlah stablecoin yang akan ditukar")
+  .option("-c, --count <count>", "Jumlah pengulangan transaksi swap (default: 1)", "1")
   .action((options) => {
-    mintWrap(options.product, options.amount);
+    mintWrap(options.product, options.amount, parseInt(options.count));
   });
 
 // 4. Stake Wrap (WRAP to StakedWRAP)
@@ -50,8 +51,9 @@ program
   .description("Stake wrapped token (T+ ke sT+ atau C+ ke sC+) di Sepolia")
   .requiredOption("-p, --product <t+|c+>", "Token wrapped yang akan distake (T+ atau C+)")
   .requiredOption("-a, --amount <amount>", "Jumlah token yang akan distake")
+  .option("-c, --count <count>", "Jumlah pengulangan transaksi staking (default: 1)", "1")
   .action((options) => {
-    stakeWrap(options.product, options.amount);
+    stakeWrap(options.product, options.amount, parseInt(options.count));
   });
 
 // 5. Bridge Wrap (Cross-chain Bridge)

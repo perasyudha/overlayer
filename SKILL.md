@@ -34,7 +34,8 @@ Melakukan swap/wrap stablecoin default (USDT ke T+ atau USDC ke C+). Fungsi ini 
     `node skills/overlayer-ops/index.js swap -p usdt -a <jumlah>`
 *   **Swap USDC ke C+:**
     `node skills/overlayer-ops/index.js swap -p usdc -a <jumlah>`
-
+*   **Swap berulang (Batch Loop) sebanyak N kali:**
+    `node skills/overlayer-ops/index.js swap -p usdt -a <jumlah> -c <count>`
 
 ### 4. Stake Token Wrap (Staking Vault)
 Staking token wrapped ke ERC-4626 vault (T+ ke sT+ atau C+ ke sC+). Approval dilakukan otomatis sebelum deposit.
@@ -42,6 +43,8 @@ Staking token wrapped ke ERC-4626 vault (T+ ke sT+ atau C+ ke sC+). Approval dil
     `node skills/overlayer-ops/index.js stake -p t+ -a <jumlah>`
 *   **Stake C+:**
     `node skills/overlayer-ops/index.js stake -p c+ -a <jumlah>`
+*   **Stake berulang (Batch Loop) sebanyak N kali:**
+    `node skills/overlayer-ops/index.js stake -p t+ -a <jumlah> -c <count>`
 
 ### 5. Bridge Token (Cross-chain LayerZero V2)
 Melakukan bridge token T+ atau C+ dari Sepolia ke chain tujuan LayerZero V2 testnet (Arbitrum, Base, atau Optimism). Biaya gas native LayerZero (`quoteSend`) dihitung otomatis.
@@ -78,4 +81,6 @@ Saat pengguna berinteraksi terkait pengujian testnet Overlayer:
 3.  **Tampilkan Hasil Transaksi:** Setelah transaksi sukses, Anda HANYA boleh menampilkan informasi **Nama Chain** dan **Hash Transaksi (Tx Hash)** beserta link explorer Sepolia Etherscan. Jangan menampilkan detail tambahan seperti alamat pengirim (from), alamat penerima, nama produk, atau jumlah token, kecuali jika diminta secara khusus oleh pengguna.
 4.  **Keamanan & Privasi (CRITICAL)**: JANGAN PERNAH mencoba membaca file `.env` secara langsung menggunakan tool pembaca file (seperti view_file atau cat). Semua interaksi dompet ditangani secara internal oleh skrip CLI. Jangan pernah menanyakan atau menampilkan private key atau seed phrase kepada pengguna atau mencetaknya ke log.
 5.  **Eksekusi Sinkron & Respons Langsung (CRITICAL)**: Anda harus selalu memanggil `run_command` dengan menyetel parameter `WaitMsBeforeAsync` ke nilai maksimum yaitu `10000` (10000ms). Karena CLI sekarang mengembalikan hash transaksi secara instan tanpa menunggu konfirmasi block yang lama, perintah ini akan selesai dalam waktu 1-2 detik secara sinkron. Anda MUST langsung menyajikan hasil sukses tersebut (Nama Chain, Hash Transaksi, dan Link Explorer) kepada pengguna dalam respons chat pertama Anda secara utuh, tanpa mengirim pesan perantara ("Perintah sedang berjalan...") dan tanpa menunggu pengguna bertanya "hasilnya?".
+6.  **Pengulangan/Batch Loop (Count)**: Jika pengguna meminta untuk mengulangi operasi swap atau stake beberapa kali (misal: "swap 1 USDT ke T+ sebanyak 30 kali"), gunakan flag `-c` atau `--count` dengan jumlah pengulangan yang diinginkan (misal: `swap -p usdt -a 1 -c 30`). Ini mengeksekusi semua transaksi secara berurutan dalam satu proses Node.js, mencegah kegagalan akibat nonce collision (tabrakan nonce) dan berjalan dengan sangat cepat.
+
 
