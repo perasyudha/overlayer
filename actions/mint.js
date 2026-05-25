@@ -86,15 +86,12 @@ export async function mintWrap(product, amountInput) {
     };
     
     const mintTx = await wrapperContract.mint(order);
-    console.log(`Transaksi mint dikirim. Hash: ${mintTx.hash}`);
-    console.log(`Menunggu konfirmasi block...`);
-    const receipt = await mintTx.wait(1);
     
     console.log(JSON.stringify({
       success: true,
       chain: chainConfig.name,
-      txHash: receipt.hash,
-      explorer: `${chainConfig.explorer}/tx/${receipt.hash}`
+      txHash: mintTx.hash,
+      explorer: `${chainConfig.explorer}/tx/${mintTx.hash}`
     }, null, 2));
   } catch (error) {
     console.error(JSON.stringify({

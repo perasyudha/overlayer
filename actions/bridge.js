@@ -85,15 +85,11 @@ export async function bridgeWrap(product, amountInput, destInput, recipientInput
       { value: nativeFeeVal } // pass nativeFee as tx value
     );
     
-    console.log(`Transaksi bridge dikirim. Hash: ${bridgeTx.hash}`);
-    console.log(`Menunggu konfirmasi block...`);
-    const receipt = await bridgeTx.wait(1);
-    
     console.log(JSON.stringify({
       success: true,
       chain: chainConfig.name,
-      txHash: receipt.hash,
-      explorer: `${chainConfig.explorer}/tx/${receipt.hash}`
+      txHash: bridgeTx.hash,
+      explorer: `${chainConfig.explorer}/tx/${bridgeTx.hash}`
     }, null, 2));
   } catch (error) {
     console.error(JSON.stringify({

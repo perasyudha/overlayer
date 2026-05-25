@@ -65,15 +65,11 @@ export async function transferAsset(product, toAddress, amountInput) {
       txResponse = await tokenContract.transfer(toAddress, amountWei);
     }
     
-    console.log(`Transaksi transfer dikirim. Hash: ${txResponse.hash}`);
-    console.log(`Menunggu konfirmasi block...`);
-    const receipt = await txResponse.wait(1);
-    
     console.log(JSON.stringify({
       success: true,
       chain: chainConfig.name,
-      txHash: receipt.hash,
-      explorer: `${chainConfig.explorer}/tx/${receipt.hash}`
+      txHash: txResponse.hash,
+      explorer: `${chainConfig.explorer}/tx/${txResponse.hash}`
     }, null, 2));
   } catch (error) {
     console.error(JSON.stringify({

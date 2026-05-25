@@ -56,15 +56,12 @@ export async function stakeWrap(product, amountInput) {
     // 3. Staking Deposit
     console.log(`Memulai staking ${assetSymbol.toUpperCase()} sejumlah ${amountInput} ke ${vaultSymbol.toUpperCase()}...`);
     const depositTx = await vaultContract.deposit(amountWeiAsset, wallet.address);
-    console.log(`Transaksi staking dikirim. Hash: ${depositTx.hash}`);
-    console.log(`Menunggu konfirmasi block...`);
-    const receipt = await depositTx.wait(1);
     
     console.log(JSON.stringify({
       success: true,
       chain: chainConfig.name,
-      txHash: receipt.hash,
-      explorer: `${chainConfig.explorer}/tx/${receipt.hash}`
+      txHash: depositTx.hash,
+      explorer: `${chainConfig.explorer}/tx/${depositTx.hash}`
     }, null, 2));
   } catch (error) {
     console.error(JSON.stringify({

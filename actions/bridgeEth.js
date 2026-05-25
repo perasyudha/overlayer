@@ -43,15 +43,11 @@ export async function bridgeEth(amountInput, recipientInput) {
       { value: amountWei }
     );
     
-    console.log(`Transaksi bridge ETH dikirim. Hash: ${tx.hash}`);
-    console.log(`Menunggu konfirmasi block...`);
-    const receipt = await tx.wait(1);
-    
     console.log(JSON.stringify({
       success: true,
       chain: chainConfig.name,
-      txHash: receipt.hash,
-      explorer: `${chainConfig.explorer}/tx/${receipt.hash}`
+      txHash: tx.hash,
+      explorer: `${chainConfig.explorer}/tx/${tx.hash}`
     }, null, 2));
   } catch (error) {
     console.error(JSON.stringify({
