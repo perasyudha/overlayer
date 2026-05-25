@@ -73,10 +73,6 @@ export async function transferAsset(product, toAddress, amountInput) {
       success: true,
       chain: chainConfig.name,
       txHash: receipt.hash,
-      from: receipt.from,
-      to: toAddress,
-      amount: amountInput,
-      symbol: symbol,
       explorer: `${chainConfig.explorer}/tx/${receipt.hash}`
     }, null, 2));
   } catch (error) {

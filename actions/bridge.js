@@ -93,13 +93,6 @@ export async function bridgeWrap(product, amountInput, destInput, recipientInput
       success: true,
       chain: chainConfig.name,
       txHash: receipt.hash,
-      from: receipt.from,
-      token: symbol,
-      amount: amountInput,
-      recipient: recipient,
-      destChain: destInput.toUpperCase(),
-      destEid: destEid,
-      nativeFeePaid: formatUnits(nativeFeeVal, 18) + " ETH",
       explorer: `${chainConfig.explorer}/tx/${receipt.hash}`
     }, null, 2));
   } catch (error) {

@@ -51,11 +51,6 @@ export async function bridgeEth(amountInput, recipientInput) {
       success: true,
       chain: chainConfig.name,
       txHash: receipt.hash,
-      from: receipt.from,
-      to: BASE_SEPOLIA_L1_BRIDGE,
-      bridgeType: "L1StandardBridge (Sepolia -> Base Sepolia)",
-      amount: amountInput,
-      recipient: recipient,
       explorer: `${chainConfig.explorer}/tx/${receipt.hash}`
     }, null, 2));
   } catch (error) {

@@ -64,10 +64,6 @@ export async function stakeWrap(product, amountInput) {
       success: true,
       chain: chainConfig.name,
       txHash: receipt.hash,
-      from: receipt.from,
-      asset: assetSymbol.toUpperCase(),
-      vault: vaultSymbol.toUpperCase(),
-      amount: amountInput,
       explorer: `${chainConfig.explorer}/tx/${receipt.hash}`
     }, null, 2));
   } catch (error) {

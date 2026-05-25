@@ -94,10 +94,6 @@ export async function mintWrap(product, amountInput) {
       success: true,
       chain: chainConfig.name,
       txHash: receipt.hash,
-      from: receipt.from,
-      product: prodUpper,
-      wrappedToken: wrapperSymbol.toUpperCase(),
-      amount: amountInput,
       explorer: `${chainConfig.explorer}/tx/${receipt.hash}`
     }, null, 2));
   } catch (error) {
