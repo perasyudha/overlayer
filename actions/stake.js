@@ -68,8 +68,7 @@ export async function stakeWrap(product, amountInput, count = 1) {
     console.log(JSON.stringify({
       success: true,
       chain: chainConfig.name,
-      txHashes: txHashes,
-      explorer: `${chainConfig.explorer}/tx/${txHashes[0]}`
+      txHashes: txHashes
     }, null, 2));
   } catch (error) {
     console.error(JSON.stringify({

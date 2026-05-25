@@ -46,8 +46,7 @@ export async function bridgeEth(amountInput, recipientInput) {
     console.log(JSON.stringify({
       success: true,
       chain: chainConfig.name,
-      txHash: tx.hash,
-      explorer: `${chainConfig.explorer}/tx/${tx.hash}`
+      txHash: tx.hash
     }, null, 2));
   } catch (error) {
     console.error(JSON.stringify({

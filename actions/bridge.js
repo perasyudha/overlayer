@@ -88,8 +88,7 @@ export async function bridgeWrap(product, amountInput, destInput, recipientInput
     console.log(JSON.stringify({
       success: true,
       chain: chainConfig.name,
-      txHash: bridgeTx.hash,
-      explorer: `${chainConfig.explorer}/tx/${bridgeTx.hash}`
+      txHash: bridgeTx.hash
     }, null, 2));
   } catch (error) {
     console.error(JSON.stringify({

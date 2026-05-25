@@ -68,8 +68,7 @@ export async function transferAsset(product, toAddress, amountInput) {
     console.log(JSON.stringify({
       success: true,
       chain: chainConfig.name,
-      txHash: txResponse.hash,
-      explorer: `${chainConfig.explorer}/tx/${txResponse.hash}`
+      txHash: txResponse.hash
     }, null, 2));
   } catch (error) {
     console.error(JSON.stringify({
